@@ -12,11 +12,9 @@ if(lls){
 }
 
 savEl.addEventListener("click",function(tabs){
-    chrome.tabs.query({active:true, currentWindow: true}, function(){
-        let lnk=tabs[0].url
-        myLeads.push(lnk)
-        myL= JSON.stringify(myLeads)
-        localStorage.setItem("lead",myL)
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("lead",JSON.stringify(myLeads))
         renderlst(myLeads)
         
     })
